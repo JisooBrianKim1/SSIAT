@@ -82,7 +82,6 @@
   color: var(--D_Gray, #525252);
 }
 
-
 .login-title {
   white-space: pre;
   font-size: 33px;
@@ -98,11 +97,10 @@
   flex-direction: row;
   caret-color: transparent;
   display: flex;
-  
 }
 
 .login-left-panel {
-  padding-left: 7%;
+  padding-left: 10%;
   padding-top: 12%;
   width: 50%;
 }
@@ -111,7 +109,7 @@
   background-color: #fff0e8;
   padding-top: 5%;
   padding-left: 3%;
-  width: 50%
+  width: 50%;
 }
 
 .login-image {

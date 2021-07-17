@@ -68,3 +68,15 @@
 .nav-links:focus {
   color: #f27980;
 }
+
+.logout-link {
+  width: auto; /* 239px */
+  height: auto; /* 23px */
+
+  white-space: pre;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--Pink, #f27980);
+}

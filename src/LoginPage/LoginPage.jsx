@@ -7,6 +7,7 @@ import './LoginPage.css'
 import LoginImage from '../data/_images/login-3.png';
 import Logo from '../data/_images/NavBarLogo.png';
 import GoogleIcon from '../data/_images/google-icon.png';
+import GoogleLogin from 'react-google-login';
 
 function LoginPage() {
     const [inputs, setInputs] = useState({
@@ -20,10 +21,6 @@ function LoginPage() {
     const dispatch = useDispatch();
     const location = useLocation();
 
-    function responseGoogle(response) {
-        console.log(response);
-        console.log(response.profileObj); 
-    }
 
     
     // reset login status
@@ -46,28 +43,36 @@ function LoginPage() {
             dispatch(userActions.login(email, password, from));
         }
     }
+
+    function responseGoogle(response) {
+        console.log(response);
+        console.log(response.profileObj); 
+    }
     
     return (
         <div className="login-page">
             {/* left-screen*/}
             <div className="login-left-panel">
                 <h2 className='login-title'>씨앗 커뮤니티에 오신 것을 환영합니다!</h2>
-                <form name="form" onSubmit={handleSubmit}>
-                    <div className="form-group" >
 
-                        <button id="google-button" className='google-button'>
+                <form name="form" onSubmit={handleSubmit}>
+                
+                <GoogleLogin
+                    clientId="95964570519-cl08olhuejqb1ouvftprassoatdjkkp7.apps.googleusercontent.com"
+                    buttonText="Login"
+                    render={renderProps => (
+                        <button onClick={renderProps.onClick} className='google-button'>
                             <img src={GoogleIcon} className='google-icon' alt='google'/>
                             <text className='google-text'>구글 어카운트로 로그인</text>
                         </button>
+                    )}
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                />
+                    <div className="form-group" >
+
                         
-                            
-                        {/* <GoogleLogin
-                            clientId="95964570519-cl08olhuejqb1ouvftprassoatdjkkp7.apps.googleusercontent.com"
-                            buttonText="Login"
-                            onSuccess={this.responseGoogle}
-                            onFailure={this.responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                        /> */}
                         <label className="login-input-title">이메일 주소</label>
                         <div>
                             <input 
